@@ -8,11 +8,17 @@ from unicodedata import name as unicode_name
 import re
 import argparse
 
+# tu definis un layout comme ca: https://github.com/daedric/qmk_userspace/blob/main/scripts/gen_keymap.py#L931-L938 ensuite tu crees la keymap que tu veux comme si tu etais dans QMK: https://github.com/daedric/qmk_userspace/blob/main/scripts/gen_keymap.py#L942-L959
+# tu adaptes le nombres de touches : https://github.com/daedric/qmk_userspace/blob/main/scripts/gen_keymap.py#L1057 (c'est la ou tu vois que c'est du quick and dirty, je pourrais largement le calculer automatiquement)
+# et enfin, parce que c'est pas dirty a moitie, tu rajoutes ta keymap dans la cli: https://github.com/daedric/qmk_userspace/blob/main/scripts/gen_keymap.py#L15
+# https://github.com/daedric/qmk_userspace/blob/main/gen.sh indique comment lancer le script
+# ha oui, aussi dans la keymap, si tu utilise un LT, n'utilise pas la virgule, mais un pipe, le parseur est aussi quick and dirty
+# donc pas LT(Fn, KC_ESC) mais  LT(Fn|KC_ESC)
 
 parser = argparse.ArgumentParser(description="Process keymap options.")
 parser.add_argument(
     "--keymap",
-    choices=["std", "daedric", "daedric_34"],
+    choices=["std", "daedric", "daedric_34", "teuf"],
     default="std",
     help='Specify the keymap to use. Options are "std" or "daedric".',
 )
@@ -929,12 +935,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {{
 
 
 fmt_layer = """
-        {}, {}, {}, {}, {}, {}, {},           {}, {}, {}, {}, {}, {}, {},
-        {}, {}, {}, {}, {}, {}, {},           {}, {}, {}, {}, {}, {}, {},
-        {}, {}, {}, {}, {}, {}, {},           {}, {}, {}, {}, {}, {}, {},
-        {}, {}, {}, {}, {}, {},                   {}, {}, {}, {}, {}, {},
-        {}, {}, {}, {}, {},         {},     {},       {}, {}, {}, {}, {},
-                            {}, {}, {},     {}, {}, {}
+        {}, {}, {}, {}, {}, {},   {}, {}, {}, {}, {}, {},
+        {}, {}, {}, {}, {}, {},   {}, {}, {}, {}, {}, {},
+        {}, {}, {}, {}, {}, {},   {}, {}, {}, {}, {}, {},
+        {}, {}, {}, {}, {}, {},   {}, {}, {}, {}, {}, {}
 """
 
 
@@ -1051,10 +1055,24 @@ keymaps = {
                                             _______, _______, _______,            _______, _______, _______
         """,
     },
+    "teuf": {
+        Mode.Base: """
+        KC_TAB ,  EKC_Q ,  EKC_C ,  EKC_O ,  EKC_P ,  EKC_W , EKC_J ,  EKC_M ,  EKC_D , EKC_DK , EKC_Y , KC_BSPC,
+        KC_ESC ,  EKC_A ,  EKC_S ,  EKC_E ,  EKC_N ,  EKC_F , EKC_L ,  EKC_R ,  EKC_T , EKC_I ,  EKC_U , KC_QUOT,
+        KC_LSFT,  EKC_Z ,  EKC_X ,  EKC_MNS, EKC_V ,  EKC_B , KC_DOT,  EKC_H ,  EKC_G , EKC_COMM, EKC_K, KC_ENT,
+        KC_LCTL, KC_LGUI, KC_LALT, _______, MO(NumFn),XXXXXXX,EKC_SPC, MO(Sym), KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT
+        """,
+        Mode.Fn: """
+        KC_F1 ,  KC_F2 ,  KC_F3 ,  KC_F4 ,  KC_F5 ,  KC_F6 , KC_F7 ,  KC_F8 ,  KC_F9 ,  KC_F10, KC_F11 , KC_F12 ,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, UC_PREV, UC_NEXT, QK_BOOT, _______, _______, _______, _______, _______, _______, _______
+        """,
+    },
 }
 
 
-km = Keymaps(fmt_layer=fmt_layer, nb_keys=72)
+km = Keymaps(fmt_layer=fmt_layer, nb_keys=48)
 
 for mode, k in keymaps[args.keymap].items():
     if mode == Mode.Base:
