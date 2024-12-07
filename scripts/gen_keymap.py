@@ -1078,7 +1078,7 @@ keymaps = {
         """,
         Mode.Adjust: """
         _______, QK_BOOT, DB_TOGG, UG_TOGG, UG_NEXT, UG_HUEU, UG_HUED, UG_SATU, UG_SATD, UG_SPDU, UG_SPDD, KC_DEL ,
-        _______, EE_CLR,  MU_NEXT, AU_ON,   AU_OFF,  _______, _______, QWERTY,  ERGOL,   DVORAK,  _______, _______,
+        _______, EE_CLR,  MU_NEXT, AU_ON,   AU_OFF,  _______, _______, XXXXXXX, XXXXXXX, XXXXXXX,  _______, _______,
         _______, AU_PREV, AU_NEXT, MU_ON,   MU_OFF,  _______, _______, UC_PREV, UC_NEXT, UC_LINX, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
         """
