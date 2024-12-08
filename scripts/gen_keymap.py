@@ -41,14 +41,15 @@ args = parser.parse_args()
 class Mode(Enum):
     Base = 0
     Qwerty = 1
-    DK = 2
-    Sym = 3
+    Dvorak = 2
+    DK = 3
+    Sym = 4
 
-    SymQwerty = 4
-    Nav = 5
-    Num = 6
-    NumFn = 7
-    Adjust = 8
+    SymQwerty = 5
+    Nav = 6
+    Num = 7
+    NumFn = 8
+    Adjust = 9
 
     # perso
     Media = 11
@@ -1064,6 +1065,18 @@ keymaps = {
         KC_LSFT,  EKC_Z ,  EKC_X ,  EKC_MNS, EKC_V ,  EKC_B , KC_DOT,  EKC_H ,  EKC_G , EKC_COMM, EKC_K, KC_ENT,
         KC_LCTL, KC_LGUI, KC_LALT, _______, MO(NumFn),XXXXXXX,EKC_SPC, MO(Sym), KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT
         """,
+        Mode.Qwerty: """
+        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+        KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
+        KC_LCTL, KC_LGUI, KC_LALT, _______, MO(NumFn),XXXXXXX,KC_SPC,  MO(Sym), KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT
+        """,
+        Mode.Dvorak: """
+        KC_TAB,  KC_SCLN, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_BSPC,
+        KC_ESC,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_SLSH,
+        KC_LSFT, KC_QUOT, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_ENT ,
+        KC_LCTL, KC_LGUI, KC_LALT, _______, MO(NumFn),XXXXXXX,KC_SPC,  MO(Sym), KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT
+        """,
         Mode.NumFn: """
         KC_TILD, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
         KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_DOT,  KC_COMM, XXXXXXX, KC_DLR,  KC_PIPE,
@@ -1078,7 +1091,7 @@ keymaps = {
         """,
         Mode.Adjust: """
         _______, QK_BOOT, DB_TOGG, UG_TOGG, UG_NEXT, UG_HUEU, UG_HUED, UG_SATU, UG_SATD, UG_SPDU, UG_SPDD, KC_DEL ,
-        _______, EE_CLR,  MU_NEXT, AU_ON,   AU_OFF,  _______, _______, XXXXXXX, XXXXXXX, XXXXXXX,  _______, _______,
+        _______, EE_CLR,  MU_NEXT, AU_ON,   AU_OFF,  _______, _______, CKC_LMOVE_Qwerty, CKC_LMOVE_Base, CKC_LMOVE_Dvorak,  _______, _______,
         _______, AU_PREV, AU_NEXT, MU_ON,   MU_OFF,  _______, _______, UC_PREV, UC_NEXT, UC_LINX, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
         """
