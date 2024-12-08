@@ -1060,20 +1060,20 @@ keymaps = {
     },
     "teuf": {
         Mode.Base: """
-        KC_TAB ,  EKC_Q ,  EKC_C ,  EKC_O ,  EKC_P ,  EKC_W , EKC_J ,  EKC_M ,  EKC_D , EKC_DK , EKC_Y , KC_BSPC,
-        KC_ESC ,  EKC_A ,  EKC_S ,  EKC_E ,  EKC_N ,  EKC_F , EKC_L ,  EKC_R ,  EKC_T , EKC_I ,  EKC_U , KC_QUOT,
-        KC_LSFT,  EKC_Z ,  EKC_X ,  EKC_MNS, EKC_V ,  EKC_B , KC_DOT,  EKC_H ,  EKC_G , EKC_COMM, EKC_K, KC_ENT,
+        KC_TAB , EKC_Q ,  EKC_C ,  EKC_O ,  EKC_P ,  EKC_W , EKC_J ,  EKC_M ,  EKC_D , EKC_DK , EKC_Y , KC_BSPC,
+        KC_ESC , LGUI_T(EKC_A), LALT_T(EKC_S), LSFT_T(EKC_E), LCTL_T(EKC_N),  EKC_F , EKC_L , LCTL_T(EKC_R), RSFT_T(EKC_T), LALT_T(EKC_I), LGUI_T(EKC_U), KC_QUOT,
+        KC_LSFT, EKC_Z ,  EKC_X ,  EKC_MNS, EKC_V ,  EKC_B , KC_DOT,  EKC_H ,  EKC_G , EKC_COMM, EKC_K, KC_ENT,
         KC_LCTL, KC_LGUI, KC_LALT, _______, MO(NumFn),XXXXXXX,EKC_SPC, MO(Sym), KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT
         """,
         Mode.Qwerty: """
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-        KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+        KC_ESC, LGUI_T(KC_A), LALT_T(KC_S), LSFT_T(KC_D), LCTL_T(KC_F), KC_G, KC_H, LCTL_T(KC_J), RSFT_T(KC_K), LALT_T(KC_L), LGUI_T(KC_SCLN), KC_QUOT,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
         KC_LCTL, KC_LGUI, KC_LALT, _______, MO(NumFn),XXXXXXX,KC_SPC,  MO(Sym), OSL(DK), KC_DOWN, KC_UP,   KC_RCTL
         """,
         Mode.Dvorak: """
         KC_TAB,  KC_SCLN, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_BSPC,
-        KC_ESC,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_SLSH,
+        KC_ESC, LGUI_T(KC_A), LALT_T(KC_O), LSFT_T(KC_E), LCTL_T(KC_U), KC_I, KC_D, LCTL_T(KC_H), RSFT(KC_T), LALT_T(KC_N), LGUI_T(KC_S), KC_SLSH,
         KC_LSFT, KC_QUOT, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_ENT ,
         KC_LCTL, KC_LGUI, KC_LALT, _______, MO(NumFn),XXXXXXX,KC_SPC,  MO(Sym), OSL(DK), KC_DOWN, KC_UP,   KC_RCTL
         """,
