@@ -531,6 +531,8 @@ class Gen:
 
     {custom_process}
     {custom_autoshift}
+
+    {extra_footer_includes}
     """
 
     def __init__(self, host, kms: "Keymaps", autoshift=False):
@@ -910,6 +912,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {{
         if self.host == "fr":
             extra_includes = ["keymap_french.h", "sendstring_french.h"]
 
+        extra_footer_includes = []
+        if args.keymap == "teuf":
+            extra_footer_includes = ["keymap-user.c"]
+
         self._gen_unicode_map()
         for m in Mode:
             self._gen(m)
@@ -934,6 +940,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {{
             ),
             custom_process=self.custom_process,
             custom_autoshift=self.autoshift and self.custom_autoshift or "",
+            extra_footer_includes="\n".join(map(lambda f: f'#include "{f}"', extra_footer_includes)),
         )
 
 
